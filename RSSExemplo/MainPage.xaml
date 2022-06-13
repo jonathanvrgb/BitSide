@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:RSSExemplo" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             x:Class="RSSExemplo.MainPage" Padding="0,0,0,0">
+    <StackLayout BackgroundColor="#000000">
+
+        <StackLayout>
+            <Image Source="logo.png" HorizontalOptions="Center" HeightRequest="30"></Image>
+            
+        </StackLayout>
+
+        <ListView
+            x:Name="NewsFeedList"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsBusy}"
+            ItemTapped="ListView_OnItemTapped"
+            ItemsSource="{Binding RSSFeed}"
+            RefreshCommand="{Binding RefreshNewsFeedCommand}" 
+            BackgroundColor="#000000"
+            >
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal">
+                    <controls:MTAdView x:Name="ads" PersonalizedAds="true" AdsId="ca-app-pub-5325371552579828/8630101500" HeightRequest="100" MinimumHeightRequest="100" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </ListView.Header>
+
+            <ListView.Footer>
+                <StackLayout Orientation="Horizontal">
+                    <controls:MTAdView x:Name="ads2" PersonalizedAds="true" AdsId="ca-app-pub-5325371552579828/8630101500" HeightRequest="100" MinimumHeightRequest="100" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </ListView.Footer>
+
+            <ListView.ItemTemplate>
+                
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+
+                            <Image  Source="{Binding Thumbnail}"
+                                WidthRequest="80" >
+                            </Image>
+
+                            <StackLayout Grid.Column="1">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    Text="{Binding Title}" 
+                                    TextColor="White"
+                                    FontFamily="ms2"/>
+                                <Label LineBreakMode="TailTruncation" Text="{Binding Description}" FontFamily="ms1"/>
+                                <Label
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Author}"
+                                    TextColor="Orange" FontFamily="ms1" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid BackgroundColor="#050505">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--
+            <Button Command="{Binding MyCommand}" ContentLayout="Top,0" Text="mytext" Image="myimage.png" />
+            -->
+            <ImageButton Clicked="news_Clicked" x:Name="news" Source="imgnews.png" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent"></ImageButton>
+            <ImageButton Clicked="trending_Clicked" x:Name="trending" Source="imgtrendingd.png" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent"></ImageButton>
+            <!--<ImageButton Clicked="market_Clicked" x:Name="market" Source="imgmarketd.png" Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent"></ImageButton> -->
+
+        </Grid>
+        
+
+    </StackLayout>
+</ContentPage>

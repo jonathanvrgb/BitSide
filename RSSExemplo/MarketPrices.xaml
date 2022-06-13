@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RSSExemplo.MarketPrices">
+    <StackLayout BackgroundColor="#000000">
+
+        <StackLayout>
+            <Image Source="logo.png" HorizontalOptions="Center" HeightRequest="30"></Image>
+        </StackLayout>
+
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+            <StackLayout>
+                <Picker x:Name="picker"
+        Title="SELECT YOUR CURRENCY"
+        TitleColor="#FCD12A"
+                    HorizontalOptions="Center"
+                        SelectedIndexChanged="picker_SelectedIndexChanged">
+                </Picker>
+
+                <Label x:Name="btcPrice" Text="Bitcoin(BTC):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="ethPrice" Text="Ethereum(ETH):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="bnbPrice" Text="Binance Coin(BNB):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="adaPrice" Text="Cardano(ADA):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="xrpPrice" Text="Ripple(XRP):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="dogePrice" Text="Dogecoin(DOGE):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="dotPrice" Text="Polkadot(DOT):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="uniPrice" Text="Uniswap(UNI):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="linkPrice" Text="ChainLink(LINK):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                <Label x:Name="axsPrice" Text="Axie Infinity(AXS):" TextColor="White" HorizontalOptions="Center" FontFamily="ms2"></Label>
+                
+            </StackLayout>
+        </ScrollView>
+        
+        
+        <Grid BackgroundColor="#050505">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Clicked="news_Clicked" x:Name="news" Source="imgnewsd.png" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent"></ImageButton>
+            <ImageButton Clicked="trending_Clicked" x:Name="trending" Source="imgtrendingd.png" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent"></ImageButton>
+            <ImageButton Clicked="market_Clicked" x:Name="market" Source="imgmarket.png" Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent"></ImageButton>
+
+        </Grid>
+
+
+    </StackLayout>
+</ContentPage>
